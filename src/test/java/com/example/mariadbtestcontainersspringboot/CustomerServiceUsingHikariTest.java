@@ -25,18 +25,18 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @TestMethodOrder(MethodOrderer.MethodName.class)
 public class CustomerServiceUsingHikariTest {
 
-    static MariaDBContainer<?> postgreContainer = new MariaDBContainer<>("mariadb:latest");
+    static MariaDBContainer<?> mariaDBContainer = new MariaDBContainer<>("mariadb:latest");
     static CustomerService customerService;
     static DBConnection dbConnection;
     static TestUtils testUtils;
     private static int testCount;
 
     @BeforeAll
-    static void startDb() throws SQLException, InterruptedException {
-        postgreContainer.start();
+    static void startDb() throws SQLException {
+        mariaDBContainer.start();
 
-        final String url = postgreContainer.getJdbcUrl();
-        dbConnection =  new ConnectionPool(url, postgreContainer.getUsername(), postgreContainer.getPassword());
+        final String url = mariaDBContainer.getJdbcUrl();
+        dbConnection =  new ConnectionPool(url, mariaDBContainer.getUsername(), mariaDBContainer.getPassword());
 
         testUtils = new TestUtils(dbConnection);
         testUtils.setUpData();
@@ -45,7 +45,7 @@ public class CustomerServiceUsingHikariTest {
 
     @AfterAll
     static void stopDb(){
-        postgreContainer.stop();
+        mariaDBContainer.stop();
     }
 
     @BeforeEach
@@ -56,7 +56,7 @@ public class CustomerServiceUsingHikariTest {
     @Test
     public void containerRunning(){
         // Assert whether the container is running
-        assertTrue(postgreContainer.isRunning());
+        assertTrue(mariaDBContainer.isRunning());
     }
 
     @Test

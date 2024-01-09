@@ -10,13 +10,13 @@ import java.sql.Connection;
 public class ConnectionPool implements DBConnection{
     private HikariDataSource ds;
 
-    public ConnectionPool(String url, String username, String password) throws InterruptedException {
+    public ConnectionPool(String url, String username, String password) {
         HikariConfig config = new HikariConfig();
         config.setJdbcUrl(url);
         config.setUsername(username);
         config.setPassword(password);
         config.setMaximumPoolSize(10);
-        create(config);
+        this.ds = new HikariDataSource(config);
     }
 
     @Override
@@ -25,23 +25,6 @@ public class ConnectionPool implements DBConnection{
             return ds.getConnection();
         } catch (Exception e) {
             throw new RuntimeException(e);
-        }
-    }
-
-    private void create(HikariConfig config) throws InterruptedException {
-        int attempts = 10;
-        while (attempts > 0) {
-            try {
-                this.ds = new HikariDataSource(config);
-                break;
-            } catch (Exception e) {
-                log.warn("Trying to create HikariDataSource..");
-                attempts--;
-                Thread.sleep(200);
-            }
-        }
-        if (this.ds == null) {
-            throw new RuntimeException("Unable to create HikariDataSource");
         }
     }
 }
