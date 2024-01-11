@@ -8,8 +8,8 @@ and the primary emphasis will be on utilizing Testcontainers for testing interac
 -----------
 
 ## Full Article
-### [MariaDB Integration Test With Spring Boot and Testcontainers]()
+### [MariaDB Integration Test With Spring Boot and Testcontainers](https://medium.com/gitconnected/mariadb-integration-test-with-springboot-and-testcontainers-0d6011413b2e)
 _Dockerized Testing for Seamless Database Integration in Java Applications_
 
-### [MariaDB Integration Test With HikariCP and Testcontainers]()
+### [MariaDB Integration Test With HikariCP and Testcontainers](https://medium.com/gitconnected/mariadb-integration-test-with-springboot-and-testcontainers-0d6011413b2e)
 _Dockerized Testing for Seamless Database Integration in Java Spring Boot Applications_
