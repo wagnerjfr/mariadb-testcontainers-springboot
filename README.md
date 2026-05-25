@@ -7,6 +7,18 @@ and the primary emphasis will be on utilizing Testcontainers for testing interac
 
 -----------
 
+## Getting Started
+
+### Prerequisites
+- **Java 21**
+- **Docker** running locally
+
+### Run tests
+
+```sh
+./mvnw test
+```
+
 ## Full Article
 ### [MariaDB Integration Testing With Spring Boot and Testcontainers](https://medium.com/gitconnected/mariadb-integration-test-with-springboot-and-testcontainers-0d6011413b2e)
 _Dockerized Testing for Seamless Database Integration in Java Applications_

@@ -3,13 +3,13 @@ package com.example.mariadbtestcontainersspringboot.util;
 import com.example.mariadbtestcontainersspringboot.Customer;
 import com.example.mariadbtestcontainersspringboot.DBConnection;
 import lombok.extern.slf4j.Slf4j;
-import org.testcontainers.shaded.org.apache.commons.lang3.RandomStringUtils;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Random;
 
 @Slf4j
 public class TestUtils {
@@ -52,7 +52,14 @@ public class TestUtils {
         }
     }
 
+    private static final String ALPHA = "abcdefghijklmnopqrstuvwxyz";
+    private static final Random RANDOM = new Random();
+
     public String getRandomString(int length){
-        return RandomStringUtils.randomAlphabetic(length);
+        StringBuilder sb = new StringBuilder(length);
+        for (int i = 0; i < length; i++) {
+            sb.append(ALPHA.charAt(RANDOM.nextInt(ALPHA.length())));
+        }
+        return sb.toString();
     }
 }
